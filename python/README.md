@@ -13,20 +13,20 @@ The proposed framework simultaneously learns either a nonlinear regression or cl
 
 ### Installation
 
-#### Installation with pip
-
-To install with `pip`, run the following command:
-```
-pip install --user stg
-```
-
 #### Installation from GitHub
 
-You can also clone the repository and install manually:
+You can also clone the repository and install manually and install it as editable version
 ```
-git clone 
+git clone https://github.com/HelloWorldLTY/stg.git
 cd stg/python
-python setup.py install --user
+pip install -e ./
+```
+
+And everytime when we change the stg package, we can reload it based on:
+```
+import importlib
+import stg
+importlib.reload(stg)
 ```
 
 ### Usage

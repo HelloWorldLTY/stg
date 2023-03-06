@@ -14,15 +14,17 @@ class FeatureSelector(nn.Module):
         self.noise = torch.randn(self.mu.size()) 
         self.sigma = sigma
         self.device = device
-    
+     
     def forward(self, prev_x):
         z = self.mu + self.sigma*self.noise.normal_()*self.training 
+#         z = self.mu + self.sigma*self.noise.normal_()
         stochastic_gate = self.hard_sigmoid(z)
         new_x = prev_x * stochastic_gate
         return new_x
     
     def hard_sigmoid(self, x):
         return torch.clamp(x+0.5, 0.0, 1.0)
+#         return torch.clamp(x, 0.0, 1.0)
 
     def regularizer(self, x):
         ''' Gaussian CDF. '''
